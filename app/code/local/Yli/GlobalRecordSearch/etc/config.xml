@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Yli_GlobalRecordSearch>
+            <version>0.1.0</version>
+        </Yli_GlobalRecordSearch>
+    </modules>
+    <global>
+           <models>
+              	 <grsearch>
+	                    <class>Yli_GlobalRecordSearch_Model</class>
+	                    <resourceModel>grsearch_resource</resourceModel>
+	             </grsearch>  
+	             <grsearch_resource>
+		                 <class>Yli_GlobalRecordSearch_Model_Resource</class>
+		           		         <entities>
+						             <grsearch>
+						                 <table>global_search</table>
+						             </grsearch>
+						         </entities>
+		          </grsearch_resource> 
+           </models>
+
+           <resources>
+                <grsearch_setup>
+                    <setup>
+                        <module>Yli_GlobalRecordSearch</module>
+                        <class>Mage_Core_Model_Resource_Setup</class>
+                    </setup>
+			           <connection>
+		                  <use>core_setup</use>
+		               </connection>
+                </grsearch_setup>
+        </resources>
+    </global>
+</config>
