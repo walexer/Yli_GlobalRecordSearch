@@ -81,4 +81,23 @@ class Yli_GlobalRecordSearch_Adminhtml_GrsearchController extends Mage_Adminhtml
         $this->_redirect('*/*/');
     }
     
+    public function deleteAction()
+    {
+        if ($id = $this->getRequest()->getParam('id')) {
+            try {
+                $model = Mage::getModel('grsearch/grsearch')->load($id);
+                $model->delete();
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('The field has been deleted.'));
+                $this->_redirect('*/*/');
+                return;
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                return;
+            }
+        }
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Unable to find a field to delete.'));
+        $this->_redirect('*/*/');
+    }
+    
 }
