@@ -6,7 +6,23 @@
             <version>0.1.0</version>
         </Yli_GlobalRecordSearch>
     </modules>
+    <admin>
+        <routers>
+            <grsearch>
+                <use>admin</use>
+                <args>
+                    <module>Yli_GlobalRecordSearch</module>
+                    <frontName>grsearch</frontName>
+                </args>
+            </grsearch>
+        </routers>
+    </admin>
     <global>
+        <blocks>
+            <grsearch>
+                <class>Yli_GlobalRecordSearch_Block</class>
+            </grsearch>
+        </blocks>
            <models>
               	 <grsearch>
 	                    <class>Yli_GlobalRecordSearch_Model</class>
@@ -33,5 +49,10 @@
 		               </connection>
                 </grsearch_setup>
         </resources>
+        <helpers>
+            <grsearch>
+                <class>Yli_GlobalRecordSearch_Helper</class>
+            </grsearch>
+        </helpers>
     </global>
 </config>
