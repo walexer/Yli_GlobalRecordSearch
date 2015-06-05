@@ -36,6 +36,11 @@
 						             </grsearch>
 						         </entities>
 		          </grsearch_resource> 
+		          <adminhtml>
+		             	<rewrite>
+		       					<search_customer>Yli_GlobalRecordSearch_Model_Search_Customer</search_customer>
+		             	</rewrite>
+	             </adminhtml>
            </models>
 
            <resources>
