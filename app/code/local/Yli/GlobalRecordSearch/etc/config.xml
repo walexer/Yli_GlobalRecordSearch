@@ -39,6 +39,7 @@
 		          <adminhtml>
 		             	<rewrite>
 		       					<search_customer>Yli_GlobalRecordSearch_Model_Search_Customer</search_customer>
+		       					<search_order>Yli_GlobalRecordSearch_Model_Search_Order</search_order>
 		             	</rewrite>
 	             </adminhtml>
            </models>
