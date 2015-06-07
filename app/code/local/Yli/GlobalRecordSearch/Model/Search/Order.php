@@ -20,12 +20,13 @@ class Yli_GlobalRecordSearch_Model_Search_Order extends Mage_Adminhtml_Model_Sea
             ->addFieldToFilter('module','order');
             $conditions = array();
             foreach ($fields as $field){
-                if ($field->getIsFuzzy() == '1'){
-                    $conditions[] = array('attribute'=>$field->getField(), 'like' => $this->getQuery().'%');
-                }else{
-                    $conditions[] = array('attribute'=>$field->getField(), 'eq' => $this->getQuery());
+                if($this->isTypeSuit($field->getType(), $this->getQuery())){
+                    if ($field->getIsFuzzy() == '1'){
+                        $conditions[] = array('attribute'=>$field->getField(), 'like' => $this->getQuery().'%');
+                    }else{
+                        $conditions[] = array('attribute'=>$field->getField(), 'eq' => $this->getQuery());
+                    }
                 }
-            
             }
             $collection->addAttributeToSearchFilter($conditions);
             
@@ -47,5 +48,14 @@ class Yli_GlobalRecordSearch_Model_Search_Order extends Mage_Adminhtml_Model_Sea
         $this->setResults($arr);
     
         return $this;
+    }
+    
+    protected function isTypeSuit($type,$query)
+    {
+        if($type == '3' && !is_numeric($query)){
+            return false;
+        }
+    
+        return true;
     }
 }
